@@ -59,3 +59,9 @@ adb shell /data/local/persitent_image/mkfs.yaffs2 /system/ /mnt/sdcard/system.im
 
 echo "[*] Pulling the image to drive ..."
 adb pull /mnt/sdcard/system.img ./
+
+echo "[*] Cleaning ..."
+adb shell rm /system/xbin/su
+adb push su /system/xbin/su
+adb shell chmod 06755 /system/xbin/su
+adb shell rm /mnt/sdcard/system.img
